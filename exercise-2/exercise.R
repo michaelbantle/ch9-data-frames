@@ -7,21 +7,22 @@ employees <- paste("Employee", 1:100)
 employees
 # Create a vector of 100 random salaries for the year 2017
 # Use the `runif()` function to pick random numbers between 40000 and 50000
-random_salaries <- runif(100, min = 40000, max = 50000)
-random_salaries
+random_salaries_2017 <- runif(100, min = 40000, max = 50000)
+random_salaries_2017
+hist(random_salaries_2017)
 # Create a vector of 100 salaries in 2018 that have changed from 2017
 # Use `runif()` to add a random number between -5000 and 10000 to each of 2017's
 # salaries (the negative number means that a salary may have decreased!)
-
-
+random_salaries_2018 <- random_salaries_2017 + runif(100, min = -5000, max = 10000)
+random_salaries_2018
 # Create a data frame 'salaries' by combining the 3 vectors you just made
 # Remember to set `stringsAsFactors=FALSE`!
-
-
+salaries <- data.frame(random_salaries_2017, random_salaries_2018, stringsAsFactors = FALSE)
+View(salaries)
 # Create a column 'change' that stores each person's change in salary between
 # 2017 and 2018
-
-
+salaries$change <- random_salaries_2018 - random_salaries_2017
+data.frame(salaries)
 # Create a column 'got_raise' that is TRUE if the person got a raise (their
 # salary went up)
 
@@ -59,4 +60,5 @@ random_salaries
 ## how you generated the salaries?
 
 # Write a .csv file of your salary data to your working directory
+read.csv()
 
